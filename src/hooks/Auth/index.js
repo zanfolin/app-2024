@@ -25,7 +25,7 @@ export function AuthProvider({ children }) {
 
     if (!response) {
       setUser({
-        autenticated: false,
+        autenticated: true,
         user: null,
         role: null,
       });

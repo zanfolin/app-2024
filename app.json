@@ -5,7 +5,7 @@
     "scheme": "react-native-expo-2024",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "../assets/icon3.jfif",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",

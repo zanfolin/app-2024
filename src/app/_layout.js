@@ -13,12 +13,13 @@ const StackLayout = () => {
     if (!user?.autenticated && inAuthGroup) {
       router.replace("/");
     } else {
-      if (!user?.autenticated) {
+      if (user?.autenticated) {
         router.replace("/(protected)");
       }
-      router.replace("/(protected)");
     }
   }, [user]);
+
+
   return (
     <Stack>
       <Stack.Screen name="index" options={{ headerShown: false }} />

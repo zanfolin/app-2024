@@ -22,28 +22,34 @@ export function AuthProvider({ children }) {
 
   const signIn = async ({ email, password }) => {
     const response = await authUser({ email, password });
+    console.log(response);
 
     if (!response) {
       setUser({
-        autenticated: true,
+        autenticated: false,
         user: null,
         role: null,
       });
+     throw new Error("usuario ou senha invalidos");
     }
-
-    if (email === "super@email.com" && password === "Super123!") {
+  
+  
+ 
+    
+    if (email === "super@gmail.com" && password === "A123456a!") {
       setUser({
         autenticated: true,
         user: { id: 1, name: "Super Usuar", email },
         role: Role.SUPER,
       });
-    } else if (email === "adm@email.com" && password === "adm123!") {
+    } else if (email === "adm@email.com" && password === "A123456a!") {
       setUser({
         autenticated: true,
         user: { id: 2, name: "Administrador", email },
         role: Role.ADM,
       });
-    } else if (email === "user@email.com" && password === "user123!") {
+    } else if (email === "user@gmail.com" && password === "A123456a!") {
+     
       setUser({
         autenticated: false,
         user: null,
@@ -57,7 +63,7 @@ export function AuthProvider({ children }) {
   };
 
   useEffect(() => {
-    console.log("AuthContext: ", user);
+    console.log("AuthProvider: ", user);
   }, [user]);
 
   return (

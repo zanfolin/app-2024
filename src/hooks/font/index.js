@@ -15,7 +15,7 @@ export function FontProvider({ children }) {
         <Text style={{ fontSize: 28, marginTop: 15 }}>
           Carregando as Fontes
         </Text>
-        <ActivityIndicator size="large" color="#0000" />
+        <ActivityIndicator size="large" color="#0000ff" />
       </View>
     );
   }

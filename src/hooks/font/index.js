@@ -7,6 +7,9 @@ const FontContext = createContext({});
 export function FontProvider({ children }) {
   const [loaded, error] = useFonts({
     regular: require("../../assets/fonts/Oswald-Regular.ttf"),
+    Medium: require("../../assets/fonts/Oswald-Medium.ttf"),
+    Bold: require("../../assets/fonts/Oswald-Bold.ttf"),
+    Light: require("../../assets/fonts/Oswald-Light.ttf"),
   });
 
   if (!loaded && !error) {

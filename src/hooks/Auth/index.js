@@ -41,7 +41,7 @@ export function AuthProvider({ children }) {
       }
     };
     LoadStoragedData();
-  }, {});
+  }, []);
 
   const signIn = async ({ email, password }) => {
     const response = await authUser({ email, password });

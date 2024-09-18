@@ -1,25 +1,43 @@
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Drawer } from 'expo-router/drawer';
-import { Button, Text, TouchableOpacity, View } from 'react-native';
+import { Button, Image, Text, TouchableOpacity, View } from 'react-native';
 import { Ionicons } from "@expo/vector-icons";
 import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import { useAuth } from '../../hooks/Auth';
 
 
 function CustomDrawerContent(props) {
-  const { signOut } = useAuth();
+  const { signOut, user } = useAuth();
 
   return (
     <View style={{ flex: 1 }}>
-      <View>
-        <Text style={{ textAlign: "center", fontSize: 20}}>
-        {user.user.name}
+      <View
+        style={{
+          marginTop: 20,
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "f0f0f0",
+          paddingVertical: 10,
+        }}
+      >
+        <Image
+          source={{
+            uri: "https://www.github.com/brendagfs.png",
+          }}
+          style={{ width: 100, height: 100, borderRadius: 50, margin: 10 }}
+        />
+        <Text
+          style={{ textAlign: "center", fontSize: 16, fontFamily: "regular" }}
+        >
+
+          {user?.user?.name}
         </Text>
       </View>
       <DrawerContentScrollView {...props}>
         <DrawerItemList {...props} />
       </DrawerContentScrollView>
-      <TouchableOpacity onPress={() => signOut()}
+      <TouchableOpacity
+        onPress={() => signOut()}
         style={{
           justifyContent: "center",
           alignItems: "center",

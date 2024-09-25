@@ -49,8 +49,8 @@ const DrawerLayout = () => {
         <Drawer.Screen
           name="list"
           options={{
-            drawerLabel: "Listagem",
-            headerTitle: "Listagem",
+            drawerLabel: "Temporadas",
+            headerTitle: "Temporadas",
             drawerIcon: () => <Ionicons name="list-outline" size={20} color="#ba181b" />, 
             drawerLabelStyle: { color: "#ba181b", fontSize: 16, fontWeight: 'bold' }, 
           }}

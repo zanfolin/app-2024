@@ -10,7 +10,6 @@ export default function App() {
   const [email, setEmail] = useState("super@gmail.com");
   const [password, setPassword] = useState("A123456a!");
   const [passwordVisibility, setPasswordVisibility] = useState(false);
-
   const togglePasswordVisibility = () => {
     setPasswordVisibility(!passwordVisibility);
   };

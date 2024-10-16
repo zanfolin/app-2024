@@ -20,7 +20,7 @@ export default function About() {
                 <Text style={styles.description}>
                 Um lugar acessível para manter a ordem dos episódios que você já assistiu, colocar sua opinião e dar notas! Assim como para ver todas as temporadas e quantos episódios elas têm.
                 </Text>
-                <Button title="Voltar" onPress={() => { router.replace("/") }} color="#0b090a" />
+                <Button tittle="voltar" onPress={() => router.back()} color="green" />
             </View>
         </View>
     );

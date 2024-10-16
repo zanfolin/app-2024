@@ -42,7 +42,8 @@ export default function App() {
           style={styles.input}
           placeholder="Senha"
           value={password}
-          onChangeText={setPassword}
+          onChan
+          geText={setPassword}
           secureTextEntry={!passwordVisibility}
         />
         <TouchableOpacity onPress={togglePasswordVisibility}>
@@ -50,19 +51,24 @@ export default function App() {
             name={passwordVisibility ? "eye-off-outline" : "eye-outline"}
             size={20}
             color="#555"
+            onPress="tooglePassqordVisibility"
           />
         </TouchableOpacity>
       </View>
 
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Entrar</Text>
+        <Text style={styles.button}>Entrar</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.link} onPress={() => router.push("/about")}>
-        <Text style={styles.linkText}>Sobre</Text>
+
+      <TouchableOpacity style={styles.link} onPress={() => router.push("about")}>
+        <Text style={styles.button}>Sobre</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.link} onPress={() => BackHandler.exitApp()}>
-        <Text style={styles.linkText}>Sair do aplicativo</Text>
+
+      <TouchableOpacity onPress={() => BackHandler.exitApp()} style={styles.link}>
+        <Text style={styles.button}>Sair do aplicativo</Text>
       </TouchableOpacity>
+
+      
       <StatusBar style="auto" />
     </View>
   );

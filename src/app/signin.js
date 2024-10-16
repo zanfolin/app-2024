@@ -25,50 +25,49 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Bem-vindo ao App !!!</Text>
+      <Text style={styles.title}>Bem-vindo ao App!</Text>
       <View style={styles.inputBox}>
-        <Ionicons name="mail-open-outline" size={20} color="#555" />
+        <Ionicons name="mail-open-outline" size={24} color="#555" />
         <TextInput
           style={styles.input}
           placeholder="E-mail"
           value={email}
           onChangeText={setEmail}
           autoCapitalize="none"
+          placeholderTextColor="#888"
         />
       </View>
       <View style={styles.inputBox}>
-        <Ionicons name="lock-closed-outline" size={20} color="#555" />
+        <Ionicons name="lock-closed-outline" size={24} color="#555" />
         <TextInput
           style={styles.input}
           placeholder="Senha"
           value={password}
-          onChan
-          geText={setPassword}
+          onChangeText={setPassword}
           secureTextEntry={!passwordVisibility}
+          placeholderTextColor="#888"
         />
         <TouchableOpacity onPress={togglePasswordVisibility}>
           <Ionicons
             name={passwordVisibility ? "eye-off-outline" : "eye-outline"}
-            size={20}
+            size={24}
             color="#555"
-            onPress="tooglePassqordVisibility"
           />
         </TouchableOpacity>
       </View>
 
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.button}>Entrar</Text>
+        <Text style={styles.buttonText}>Entrar</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.link} onPress={() => router.push("about")}>
-        <Text style={styles.button}>Sobre</Text>
+        <Text style={styles.linkText}>Sobre</Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => BackHandler.exitApp()} style={styles.link}>
-        <Text style={styles.button}>Sair do aplicativo</Text>
+        <Text style={styles.linkText}>Sair do aplicativo</Text>
       </TouchableOpacity>
 
-      
       <StatusBar style="auto" />
     </View>
   );
@@ -77,17 +76,17 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#e9ecef",
+    backgroundColor: "#f0f4f8",
     alignItems: "center",
     justifyContent: "center",
     padding: 30,
   },
   title: {
-    fontFamily: "regular",
-    fontSize: 26,
+    fontSize: 28,
     marginBottom: 30,
     color: "#343a40",
     textAlign: "center",
+    fontWeight: "600",
   },
   inputBox: {
     flexDirection: "row",
@@ -100,14 +99,13 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    fontFamily: "regular",
     fontSize: 18,
     paddingVertical: 5,
     color: "#343a40",
     marginLeft: 10,
   },
   button: {
-    backgroundColor: "#6c757d",
+    backgroundColor: "#780000",
     padding: 15,
     borderRadius: 8,
     width: "100%",
@@ -123,7 +121,7 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
   linkText: {
-    color: "#007bff",
+    color: "#780000",
     fontSize: 16,
     textDecorationLine: "underline",
   },

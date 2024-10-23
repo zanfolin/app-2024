@@ -1,8 +1,9 @@
-import { router } from "expo-router";
-import { useState } from "react";
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { Button, StyleSheet, Text, TextInput, View, TouchableOpacity } from "react-native";
-import { Ionicons } from '@expo/vector-icons';
-import { Picker } from '@react-native-picker/picker';
+import DateTimePicker from '@react-native-community/datetimepicker';
+import { useState } from "react";
+import { router } from "expo-router";
+import { Picker } from "@react-native-picker/picker";
 
 export default function Payments() {
     const [valor, setValor] = useState("0,00");
@@ -115,10 +116,17 @@ export default function Payments() {
         }
     ]);
     const [id, setId] = useState(1);
+    const [data, setData] = useState(new Date());
+    const [viewCalendar, setViewCalendar] = useState(false);
+
+    const handleCalendar = (event, selectedDate) => {
+        setData(selectedDate);
+        setViewCalendar(false);
+    }
 
 
-    return (
-        <View style={styles.content}>
+    return <View style={styles.content}>
+        <View style={styles.inputView}>
             <View style={styles.inputView}>
                 <Ionicons name="wallet" size={24} color="black" />
                 <TextInput
@@ -129,39 +137,54 @@ export default function Payments() {
                     onChangeText={setValor}
                 />
             </View>
-            <View style={styles.inputView}>
-                <Picker
-                    selectedValue={id}
-                    onValueChange={(itemValue, index) => {
-                        setId(itemValue);
-                    }}
-                >
-                    {sugestoes?.map((item) => {
-                            return <Picker.item key={item.id} label={item.nome} value={item.id} />
-                        })}
-                </Picker>
-            </View>
-            <View style={styles.inputView}>
-                <TextInput style={styles.input}
-                    placeholder="Data" />
-            </View>
-            <View style={styles.inputView}>
-                <TextInput style={styles.input}
-                    placeholder="Observações" multiline />
-            </View>
-            <View style={styles.contentButtons}>
-                <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Salvar</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Continuar</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.button} onPress={() => router.back()}>
-                    <Text style={styles.buttonText}>Cancelar</Text>
-                </TouchableOpacity>
-            </View>
+            <TextInput
+                placeholder="Valor"
+                keyboardType="decimal-pad"
+                style={styles.inputValor}
+                value={valor}
+                onChangeText={setValor}
+            />
         </View>
-    );
+        <View style={styles.inputView}>
+            <Picker
+                selectedValue={id}
+                onValueChange={(itemValue, index) => {
+                    setId(itemValue);
+                }}
+                style={{ width: "100%" }}
+            >
+                {sugestoes?.map((item) => {
+                    return <Picker.item key={item.id} label={item.nome} value={item.id} />
+                })}
+            </Picker>
+        </View>
+        <View style={styles.inputView}>
+            <Text onPress={() => setViewCalendar(true)}>
+                {data.toLocaleDateString().split("T")[0]}
+            </Text>
+            {viewCalendar && (
+                <DateTimePicker
+                    value={data}
+                    onChange={handleCalendar} mode="date"
+                />
+            )}
+        </View>
+        <View style={styles.inputView}>
+            <TextInput style={styles.input}
+                placeholder="Observações" multiline />
+        </View>
+        <View style={styles.contentButtons}>
+            <TouchableOpacity style={styles.button}>
+                <Text style={styles.buttonText}>Salvar</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button}>
+                <Text style={styles.buttonText}>Continuar</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={() => router.back()}>
+                <Text style={styles.buttonText}>Cancelar</Text>
+            </TouchableOpacity>
+        </View>
+    </View>
 }
 
 const styles = StyleSheet.create({
